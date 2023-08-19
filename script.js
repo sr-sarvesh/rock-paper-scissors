@@ -34,24 +34,10 @@ function game() {
     let playerScore = 0;
     let computerScore = 0;
     let playerSelection, computerSelection, result;
-
-    for (let round = 1; round <= 5; round++) {
-        playerSelection = prompt("Enter your choice (rock/paper/scissors) ");
-        computerSelection = getComputerChoice();
-        result = playRound(capitalize(playerSelection), computerSelection);
-        console.log(result);
-
-        if (result.includes("won")) {
-            playerScore++;
-        } else if (result.includes("lose")) {
-            computerScore++;
-        }
-    }
-
     let round = 0;
     while (round < 5) {
         playerSelection = prompt("Enter your choice (rock/paper/scissors) ");
-        if (capitalize(playerSelection) != "Rock" || capitalize(playerSelection) != "Paper" || capitalize(playerSelection) != 'Scissors') {
+        if (capitalize(playerSelection) !== "Rock" && capitalize(playerSelection) !== "Paper" && capitalize(playerSelection) !== 'Scissors') {
             continue;
         } else {
             computerSelection = getComputerChoice();
@@ -68,6 +54,13 @@ function game() {
     }
     console.log(`Your score: ${playerScore}\nComputer's score: ${computerScore}`);
 
+    if (playerScore > computerScore) {
+        console.log("YOU WON!");
+    } else if (playerScore < computerScore) {
+        console.log("YOU LOSE!");
+    } else {
+        console.log("IT'S A DRAW!");
+    }
 }
 
 game();
